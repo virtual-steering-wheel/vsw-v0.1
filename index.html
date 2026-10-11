@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Steering Wheel Pad — PC Receiver Downloads</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        glass: {
+                            100: 'rgba(255, 255, 255, 0.05)',
+                            200: 'rgba(255, 255, 255, 0.1)',
+                            300: 'rgba(255, 255, 255, 0.15)',
+                            border: 'rgba(255, 255, 255, 0.18)',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 4s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        glow: {
+                            '0%': { opacity: 0.4, transform: 'scale(1)' },
+                            '100%': { opacity: 0.8, transform: 'scale(1.05)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Liquid Glass & Mesh Gradient Background Effects */
+        body {
+            background-color: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.22) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(168, 85, 247, 0.22) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.18) 0%, transparent 50%),
+                #030712;
+        }
+
+        .liquid-glass {
+            background: rgba(18, 24, 38, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .liquid-glass-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .liquid-glass-hover:hover {
+            background: rgba(24, 32, 52, 0.7);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .glow-button {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            transition: all 0.3s ease;
+        }
+        .glow-button::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(60deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg) translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        .glow-button:hover::after {
+            transform: rotate(45deg) translateX(100%);
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="selection:bg-indigo-500 selection:text-white">
+
+    <div class="mesh-bg"></div>
+
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-4">
+        <div class="max-w-7xl mx-auto liquid-glass rounded-2xl px-6 py-3 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-steering-wheel text-white text-xl"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-indigo-300">VSW Pad</span>
+                    <span class="text-[10px] text-indigo-400 font-medium tracking-wider uppercase">Virtual Steering</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#features" class="hover:text-indigo-400 transition-colors">Features</a>
+                <a href="#downloads" class="hover:text-indigo-400 transition-colors">Downloads</a>
+                <a href="#compatibility" class="hover:text-indigo-400 transition-colors">Compatibility</a>
+                <a href="#docs" class="hover:text-indigo-400 transition-colors">Documentation</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <a href="#downloads" class="hidden sm:inline-flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium bg-white/10 hover:bg-white/20 border border-white/10 transition-all">
+                    <i class="fa-solid fa-download text-indigo-400"></i>
+                    <span>Get VSW</span>
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white text-xl p-2">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden max-w-7xl mx-auto mt-2 liquid-glass rounded-2xl p-4 flex flex-col space-y-3 md:hidden">
+            <a href="#features" class="text-gray-300 hover:text-white py-2 px-3 rounded-lg hover:bg-white/5">Features</a>
+            <a href="#downloads" class="text-gray-300 hover:text-white py-2 px-3 rounded-lg hover:bg-white/5">Downloads</a>
+            <a href="#compatibility" class="text-gray-300 hover:text-white py-2 px-3 rounded-lg hover:bg-white/5">Compatibility</a>
+            <a href="#docs" class="text-gray-300 hover:text-white py-2 px-3 rounded-lg hover:bg-white/5">Documentation</a>
+        </div>
+    </header>
+
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-32 px-4 sm:px-8">
+        <!-- Glowing Orb Background Accent -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 bg-indigo-600/30 rounded-full blur-[120px] pointer-events-none animate-glow"></div>
+        <div class="absolute top-1/3 left-1/4 w-64 h-64 bg-purple-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <!-- Badge -->
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full liquid-glass border border-indigo-500/30 text-indigo-300 text-xs md:text-sm font-medium mb-8 animate-float shadow-lg shadow-indigo-500/10">
+                <span class="flex h-2 w-2 rounded-full bg-indigo-400 animate-ping"></span>
+                    <span>VSW Windows Receiver — current build</span>
+                <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                Transform Your Device Into a <br class="hidden sm:inline" />
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400">Pro Virtual Steering Wheel</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-gray-300 mb-10 leading-relaxed font-normal">
+                Use your phone as a configurable game controller for a Windows PC. Connect over your local network, then configure the virtual controller in each game.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="#downloads" class="w-full sm:w-auto glow-button text-white font-semibold px-8 py-4 rounded-2xl shadow-xl flex items-center justify-center space-x-3 text-base">
+                    <i class="fa-brands fa-windows text-xl"></i>
+                    <span>Download Windows Receiver</span>
+                </a>
+                <a href="#features" class="w-full sm:w-auto liquid-glass liquid-glass-hover text-gray-200 font-semibold px-8 py-4 rounded-2xl flex items-center justify-center space-x-2 text-base">
+                    <i class="fa-solid fa-play text-xs text-indigo-400"></i>
+                    <span>Explore Features</span>
+                </a>
+            </div>
+
+            <!-- Hero Visual Card / Glass Showcase -->
+            <div class="relative max-w-4xl mx-auto liquid-glass rounded-3xl p-4 md:p-6 shadow-2xl border border-white/10 group">
+                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/10 to-purple-500/10 rounded-3xl pointer-events-none"></div>
+                <div class="relative rounded-2xl overflow-hidden bg-gray-900/80 border border-white/5 aspect-video flex items-center justify-center">
+                    <!-- Simulated HUD Graphic / Dashboard -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-6 bg-gradient-to-b from-transparent via-gray-950/60 to-gray-950">
+                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-indigo-500/40 border-t-indigo-400 flex items-center justify-center animate-spin-slow mb-4 shadow-2xl shadow-indigo-500/30">
+                            <i class="fa-solid fa-steering-wheel text-4xl md:text-5xl text-indigo-300"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide">VSW Pad Control Bridge</h3>
+                        <p class="text-sm text-gray-400 mt-1">Status: Ready for Connection via Wi-Fi / USB Debugging</p>
+                        <div class="flex items-center space-x-3 mt-4">
+                            <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-semibold border border-emerald-500/30 flex items-center space-x-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Local-network control</span>
+                            </span>
+                            <span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold border border-indigo-500/30">
+                                DirectInput Active
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="downloads" class="py-20 px-4 sm:px-8 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+                    Get the Receiver App
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base">
+                    Download the VSW Receiver software for your platform to bridge your mobile controller to your PC simulator seamlessly.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                
+                <!-- Windows Receiver Card (Active & Interactive) -->
+                <div class="liquid-glass liquid-glass-hover rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none group-hover:bg-indigo-500/30 transition-all"></div>
+                    
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500/30 to-purple-600/30 border border-indigo-500/40 flex items-center justify-center text-indigo-300 shadow-lg">
+                                <i class="fa-brands fa-windows text-3xl"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+                                Available Now
+                            </span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white mb-2">Windows Receiver</h3>
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            Windows companion receiver for the VSW Android app. The installer places the receiver and its required files in your user profile; third-party controller drivers are installed separately.
+                        </p>
+
+                        <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-solid fa-circle-check text-indigo-400"></i>
+                                <span>Virtual Xbox controller through ViGEmBus (install separately)</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-solid fa-circle-check text-indigo-400"></i>
+                                <span>Phone discovery and manual IP connection</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-solid fa-circle-check text-indigo-400"></i>
+                                <span>Optional desktop streaming and game telemetry</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <a href="https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1Vp92o1SQnu9wNKtKlopz3aMs9aIQ0Psv" class="w-full glow-button text-white font-semibold py-4 px-6 rounded-2xl flex items-center justify-center space-x-3 shadow-lg transition-all">
+                            <i class="fa-solid fa-download text-lg"></i>
+                            <span>Download Windows Installer</span>
+                        </a>
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-2 mt-3 text-xs text-gray-400 px-1">
+                            <span>File: VSW-Windows-Receiver-Setup-2026-10-07.exe</span>
+                            <a class="text-indigo-300 hover:text-white underline" href="https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1C_hPdebKyfmaieIjp1copdvyTpxQz2at">VSW-Windows-Receiver-Portable-v1.0.zip</a>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2 text-center">SHA-256: <a class="text-indigo-300 hover:text-white underline" href="#docs">verify downloads</a></p>
+                        <p class="mt-3 text-xs text-gray-500">Windows may show a SmartScreen warning because this build is not code-signed. ViGEmBus is a separate prerequisite for Xbox controller emulation.</p>
+                    </div>
+                </div>
+
+                <!-- TV Receiver Card (Explicitly Disabled / Not Available) -->
+                <div class="liquid-glass rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden opacity-75 border-dashed border-gray-700">
+                    <div class="absolute inset-0 bg-gray-950/40 backdrop-blur-[2px] pointer-events-none"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 rounded-2xl bg-gray-800/80 border border-gray-700 flex items-center justify-center text-gray-500 shadow-lg">
+                                <i class="fa-solid fa-tv text-3xl"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold border border-amber-500/20 flex items-center space-x-1.5">
+                                <i class="fa-solid fa-clock text-[10px]"></i>
+                                <span>Not supported</span>
+                            </span>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-gray-300 mb-2">Smart TV Receiver</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            There is no Android TV or Google TV receiver package available. The Windows receiver is for Windows PCs only.
+                        </p>
+
+                        <ul class="space-y-3 mb-8 text-sm text-gray-500">
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-solid fa-lock text-gray-600"></i>
+                                <span>TV receiver is not available</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-solid fa-lock text-gray-600"></i>
+                                <span>No TV APK is provided</span>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fa-solid fa-lock text-gray-600"></i>
+                                <span>Use the Windows receiver on a PC instead</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="relative z-10">
+                        <button disabled class="w-full bg-gray-800/50 text-gray-500 font-semibold py-4 px-6 rounded-2xl flex items-center justify-center space-x-3 border border-gray-700/50 cursor-not-allowed">
+                            <i class="fa-solid fa-ban text-lg"></i>
+                            <span>Not available</span>
+                        </button>
+                        <div class="flex items-center justify-between mt-3 text-xs text-gray-500 px-1">
+                            <span>Status: Unsupported</span>
+                            <span>No download</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 px-4 sm:px-8 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+                    Engineered for Sim Racing Perfection
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto text-sm sm:text-base">
+                    Discover why thousands of simulator enthusiasts choose VSW Pad for immersive control.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Feature 1 -->
+                <div class="liquid-glass liquid-glass-hover rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-2xl mb-6 shadow-lg">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Phone-to-PC Control</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Sends controller input over the local network. Actual response time depends on the phone, PC, Wi-Fi or tether, and game; no fixed latency is promised.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-indigo-400 font-semibold">
+                        <span>Local network</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="liquid-glass liquid-glass-hover rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl mb-6 shadow-lg">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Custom Control Layouts</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Design your personalized cockpit interface with customizable steering sensitivity, touch buttons, sliders, and gear shift paddles.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-purple-400 font-semibold">
+                        <span>Fully Customizable</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="liquid-glass liquid-glass-hover rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-pink-500/20 border border-pink-500/30 flex items-center justify-center text-pink-400 text-2xl mb-6 shadow-lg">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">ETS2 & Sim Sync</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Controller support depends on each game's input options. Euro Truck Simulator 2 and American Truck Simulator telemetry additionally require a compatible SCS telemetry plugin.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-pink-400 font-semibold">
+                        <span>Per-game setup may be needed</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="compatibility" class="py-20 px-4 sm:px-8 relative">
+        <div class="max-w-5xl mx-auto liquid-glass rounded-3xl p-8 md:p-12 relative overflow-hidden border border-white/10">
+            <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-purple-600/15 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div>
+                    <span class="text-indigo-400 text-xs font-bold uppercase tracking-widest block mb-2">Seamless Integration</span>
+                    <h2 class="text-3xl font-bold text-white mb-4">Works With Your Favorite Racing Sims</h2>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                        The receiver exposes a virtual Xbox controller through ViGEmBus. Game compatibility and button mapping vary by title; choose and configure the VSW controller in the game’s input settings.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-3 text-sm text-gray-200">
+                            <i class="fa-solid fa-check text-indigo-400"></i>
+                            <span>Euro Truck Simulator 2</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-sm text-gray-200">
+                            <i class="fa-solid fa-check text-indigo-400"></i>
+                            <span>American Truck Simulator</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-sm text-gray-200">
+                            <i class="fa-solid fa-check text-indigo-400"></i>
+                            <span>Assetto Corsa / Competizione</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-sm text-gray-200">
+                            <i class="fa-solid fa-check text-indigo-400"></i>
+                            <span>Forza Horizon 5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900/60 rounded-2xl p-6 border border-white/5">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center space-x-2">
+                        <i class="fa-solid fa-server text-indigo-400"></i>
+                        <span>System Requirements</span>
+                    </h3>
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li class="flex justify-between items-center pb-3 border-b border-white/5">
+                            <span class="text-gray-400">OS</span>
+                            <span class="font-medium text-white">Windows 10 / 11 (64-bit)</span>
+                        </li>
+                        <li class="flex justify-between items-center pb-3 border-b border-white/5">
+                            <span class="text-gray-400">Mobile App</span>
+                            <span class="font-medium text-white">Android app required</span>
+                        </li>
+                        <li class="flex justify-between items-center pb-3 border-b border-white/5">
+                            <span class="text-gray-400">Connectivity</span>
+                            <span class="font-medium text-white">Same reachable LAN or USB tethering</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-400">Controller driver</span>
+                            <span class="font-medium text-white">ViGEmBus (separate install)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="docs" class="py-16 px-4 sm:px-8">
+        <div class="max-w-5xl mx-auto liquid-glass rounded-3xl p-8 md:p-10">
+            <span class="text-indigo-300 text-xs font-bold uppercase tracking-widest">Quick start</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2 mb-6">Install and connect</h2>
+            <ol class="space-y-4 text-sm text-gray-300 list-decimal list-inside">
+                <li>Download and run the Windows installer, or extract the portable ZIP to a folder. The installer is per-user and does not require administrator access.</li>
+                <li>Install ViGEmBus separately from its official source if you need the virtual Xbox controller. The VSW installer does not install drivers or change firewall settings.</li>
+                <li>Allow the receiver on your trusted Private network when Windows Firewall asks. Keep the phone and PC on the same reachable network, open the receiver, then use discovery or enter the PC's current IP in the Android app.</li>
+                <li>In your game, select the VSW virtual Xbox controller and map its controls. For ETS2/ATS live speed, RPM, gear, and damage, install and enable a compatible SCS telemetry plugin.</li>
+            </ol>
+            <p class="text-xs text-gray-500 mt-6">Streaming frame rate and resolution are best-effort request targets, not guarantees. Telemetry is game/plugin dependent. Verify downloaded files using the SHA-256 values shipped alongside the downloads.</p>
+        </div>
+    </section>
+
+    <footer class="mt-20 border-t border-white/10 py-12 px-4 sm:px-8 bg-gray-950/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-sm shadow-md">
+                    <i class="fa-solid fa-steering-wheel"></i>
+                </div>
+                <span class="font-bold text-white text-base">Virtual Steering Wheel Pad (VSW Pad)</span>
+            </div>
+
+            <p class="text-xs text-gray-400 text-center md:text-left">
+                &copy; 2026 VSW Pad Project. All rights reserved. Designed for elite sim racers.
+            </p>
+
+            <div class="flex items-center space-x-6 text-gray-400 text-sm">
+                <a href="#downloads" class="hover:text-indigo-400 transition-colors">Downloads</a>
+                <a href="#docs" class="hover:text-indigo-400 transition-colors">Setup guide</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
